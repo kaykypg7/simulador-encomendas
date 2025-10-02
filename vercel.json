@@ -1,13 +1,9 @@
 {
-  "version": 2,
-  "framework": "angular",
-  "outputDirectory": "dist/encomendas-project/browser",
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+    "version": 2,
+    "framework": "angular",
+    "outputDirectory": "dist/encomendas-project/browser",
+    "rewrites": [
+        { "source": "/assets/(.*)", "destination": "/assets/$1" },
+        { "source": "/(.*)", "destination": "/index.html" }
+    ]
 }
