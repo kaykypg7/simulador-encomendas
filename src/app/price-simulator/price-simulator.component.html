@@ -1,0 +1,105 @@
+<div class="simulator-container">
+    <div class="simulator-header">
+        <h1>Simulador de Preços</h1>
+        <p>Calcule o valor da sua encomenda de forma rápida e precisa</p>
+    </div>
+
+    <div class="simulator-content">
+        <form class="simulator-form" (ngSubmit)="calculateShipping()">
+            <div class="form-columns">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="origin">CEP de Origem</label>
+                        <input type="text" id="origin" placeholder="00000-000" [(ngModel)]="shipmentData.originZipCode"
+                            name="originZipCode" required maxlength="9">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination">CEP de Destino</label>
+                        <input type="text" id="destination" placeholder="00000-000"
+                            [(ngModel)]="shipmentData.destinationZipCode" name="destinationZipCode" required
+                            maxlength="9">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Peso (kg)</label>
+                        <input type="number" id="weight" placeholder="Ex: 1.5" [(ngModel)]="shipmentData.weight"
+                            name="weight" required min="0.01" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="length">Comprimento (cm)</label>
+                        <input type="number" id="length" placeholder="Ex: 20" [(ngModel)]="shipmentData.length"
+                            name="length" required min="1" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="width">Largura (cm)</label>
+                        <input type="number" id="width" placeholder="Ex: 15" [(ngModel)]="shipmentData.width"
+                            name="width" required min="1" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="height">Altura (cm)</label>
+                        <input type="number" id="height" placeholder="Ex: 10" [(ngModel)]="shipmentData.height"
+                            name="height" required min="1" step="0.1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="service">Tipo de Serviço</label>
+                <select id="service" [(ngModel)]="shipmentData.serviceType" name="serviceType" required>
+                    <option value="" disabled selected>Selecione um serviço</option>
+                    <option value="PAC">PAC - Econômico</option>
+                    <option value="SEDEX">SEDEX - Expresso</option>
+                    <option value="SEDEX10">SEDEX 10 - Entrega até às 10h</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="value">Valor Declarado (opcional)</label>
+                <input type="number" id="value" placeholder="Valor em reais (R$)"
+                    [(ngModel)]="shipmentData.declaredValue" name="declaredValue" min="0" step="0.01">
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" (click)="resetForm()">Limpar</button>
+                <button type="submit" class="btn-primary">Calcular</button>
+            </div>
+        </form>
+
+        <div class="result-section" *ngIf="shippingResult">
+            <h2>Resultado</h2>
+            <div class="result-card">
+                <div class="result-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1534/1534240.png" alt="Transportadora" width="48">
+                    <h3>{{ shippingResult.serviceName }}</h3>
+                </div>
+
+                <div class="result-details">
+                    <div class="result-row">
+                        <span>Valor do Frete:</span>
+                        <span class="result-value">{{ shippingResult.price | currency:'BRL' }}</span>
+                    </div>
+
+                    <div class="result-row">
+                        <span>Prazo de Entrega:</span>
+                        <span class="result-value">{{ shippingResult.deliveryTime }} dias úteis</span>
+                    </div>
+
+                    <div class="result-row">
+                        <span>Distância:</span>
+                        <span class="result-value">{{ shippingResult.distance }} km</span>
+                    </div>
+                </div>
+
+                <div class="result-footer">
+                    <button class="btn-outline">Contratar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

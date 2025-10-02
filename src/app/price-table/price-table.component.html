@@ -1,0 +1,79 @@
+<div class="price-table-container">
+    <div class="price-table-header">
+        <h1>Tabela de Preços</h1>
+        <p>Consulte os valores e prazos para as principais regiões do país</p>
+    </div>
+
+    <div class="search-filters">
+        <div class="filter-group">
+            <label for="origin-region">Região de origem:</label>
+            <select id="origin-region" [(ngModel)]="filters.originRegion">
+                <option value="all">Todas</option>
+                <option value="norte">Norte</option>
+                <option value="nordeste">Nordeste</option>
+                <option value="centro-oeste">Centro-Oeste</option>
+                <option value="sudeste">Sudeste</option>
+                <option value="sul">Sul</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="destination-region">Região de destino:</label>
+            <select id="destination-region" [(ngModel)]="filters.destinationRegion">
+                <option value="all">Todas</option>
+                <option value="norte">Norte</option>
+                <option value="nordeste">Nordeste</option>
+                <option value="centro-oeste">Centro-Oeste</option>
+                <option value="sudeste">Sudeste</option>
+                <option value="sul">Sul</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="service-type">Tipo de serviço:</label>
+            <select id="service-type" [(ngModel)]="filters.serviceType">
+                <option value="all">Todos</option>
+                <option value="PAC">PAC</option>
+                <option value="SEDEX">SEDEX</option>
+                <option value="SEDEX10">SEDEX 10</option>
+            </select>
+        </div>
+
+        <button class="filter-button" (click)="applyFilters()">Filtrar</button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Serviço</th>
+                    <th>Peso Máx. (kg)</th>
+                    <th>Preço Base</th>
+                    <th>Prazo (dias)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pricing of filteredPrices">
+                    <td>{{ pricing.origin }}</td>
+                    <td>{{ pricing.destination }}</td>
+                    <td>
+                        <span class="service-tag" [class]="pricing.serviceType.toLowerCase()">
+                            {{ pricing.serviceType }}
+                        </span>
+                    </td>
+                    <td>{{ pricing.maxWeight }}</td>
+                    <td>{{ pricing.basePrice | currency:'BRL' }}</td>
+                    <td>{{ pricing.deliveryTime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-info">
+        <p><strong>Nota:</strong> Os preços apresentados são valores base e podem sofrer alterações conforme peso,
+            dimensões e valor declarado da encomenda.</p>
+        <p>Para um cálculo preciso, utilize nosso <a routerLink="/price-simulator">Simulador de Preços</a>.</p>
+    </div>
+</div>
