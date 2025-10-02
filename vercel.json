@@ -1,7 +1,7 @@
 {
     "version": 2,
     "framework": "angular",
-    "outputDirectory": "dist/encomendas-project/browser",
+    "outputDirectory": "dist/browser",
     "rewrites": [
         { "source": "/assets/(.*)", "destination": "/assets/$1" },
         { "source": "/(.*)", "destination": "/index.html" }
