@@ -29,6 +29,15 @@ nav {
     display: flex;
     gap: 1.5rem;
 }
+.logo a {
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.5rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
 nav a {
     text-decoration: none;
@@ -58,7 +67,7 @@ nav a:hover::after {
     width: 100%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
     header {
         flex-direction: column;
         padding: 1rem;
@@ -67,4 +76,5 @@ nav a:hover::after {
     .logo {
         margin-bottom: 1rem;
     }
+    
 }
