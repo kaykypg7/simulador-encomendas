@@ -1,16 +1,9 @@
 {
   "version": 2,
-  "public": true,
-  "builds": [
-    { 
-      "src": "dist/encomendas-project/browser/**",
-      "use": "@vercel/static"
-    }
-  ],
+  "framework": "angular",
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/encomendas-project/browser/index.html"
-    }
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

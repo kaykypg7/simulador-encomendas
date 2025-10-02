@@ -1,10 +1,32 @@
-# EncomendasProject
+# Simulador de Encomendas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+Um aplicativo web para simular preços de envio de encomendas, desenvolvido com Angular.
+
+![Angular](https://img.shields.io/badge/Angular-19.1.0-red)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)
+
+## Sobre o Projeto
+
+Este simulador permite que usuários calculem custos de envio baseados em:
+- Dimensões do pacote
+- Peso
+- Distância (CEP de origem e destino)
+- Tipo de serviço (PAC, SEDEX, SEDEX 10)
+
+Também inclui uma tabela de referência com preços entre diferentes regiões do Brasil.
+
+Este projeto foi gerado usando [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+
+## Funcionalidades
+
+- Interface responsiva e intuitiva
+- Cálculo de fretes em tempo real
+- Tabela de preços de referência
+- Simulação de prazos de entrega
 
 ## Development server
 
-To start a local development server, run:
+Para iniciar um servidor de desenvolvimento local, execute:
 
 ```bash
 ng serve

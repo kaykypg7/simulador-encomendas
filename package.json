@@ -5,8 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "start:dev": "ng serve --no-ssr",
-    "build": "ng build",
+    "build": "ng build --configuration production --output-path dist/encomendas-project/browser",
     "build:client": "ng build --configuration development",
+    "build:ssr": "ng build && ng run encomendas-project:server",
+    "vercel-build": "npm run build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:encomendas-project": "node dist/encomendas-project/server/server.mjs"
